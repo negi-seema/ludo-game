@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Game</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        .wrapper {
+            background: lightblue;
+            height: 100vh;
+        }
+
+        .main__wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dice__cnt {
+            display: flex;
+        }
+
+        .dice1 {
+            margin-right: 40px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 20px;
+            display: flex;
+            margin: 30px auto;
+
+        }
+
+        .result {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        p{
+            font-weight: 700;
+            font-size:30px;
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main__wrapper">
+            <h1 class="result">Start Play</h1>
+            <div class="dice__cnt">
+                <div class="dice1">
+                    <p>Player 1</p>
+                    <img src="./image/dice1.svg" class='imgfirst' alt="img" width="300px">
+                </div>
+                <div class="dice2">
+                    <p>Player 2</p>
+                    <img src="./image/dice2.svg" class='imgsecond' alt="img" width="300px">
+                </div>
+            </div>
+            <button class="btn">Click</button>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.querySelector('.btn');
+        let dicImg1 = document.querySelector('.imgfirst');
+        let dicImg2 = document.querySelector('.imgsecond');
+        let result = document.querySelector('.result');
+        btn.addEventListener('click', function () {
+            let randomNum1, srcTxt1;
+            randomNum1 = Math.floor((Math.random() * 6) + 1);
+            srcTxt1 = `./image/dice${randomNum1}.svg`;
+            dicImg1.setAttribute('src', srcTxt1)
+
+            let randomNum2, srcTxt2;
+            randomNum2 = Math.floor((Math.random() * 6) + 1);
+            srcTxt2 = `./image/dice${randomNum2}.svg`;
+            dicImg2.setAttribute('src', srcTxt2);
+
+            if (randomNum1 > randomNum2) {
+                result.innerHTML = "Player 1 winner";
+            }
+            else if (randomNum2 > randomNum1) {
+                result.innerHTML = "Player 2 winner";
+            }
+            else {
+                result.innerHTML = "Draw";
+            }
+        })
+    </script>
+
+</body>
+
+</html>
